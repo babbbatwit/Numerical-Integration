@@ -11,6 +11,6 @@ public class NumeralIntegration {
 		System.out.println("Please input the upper limit of the integral(b): ");
 		int upperLimit = myScanner.nextInt();
 		
-		System.out.
+		
 	}
 }
