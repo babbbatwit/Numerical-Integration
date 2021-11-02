@@ -82,10 +82,29 @@ public class NumeralIntegration {
 				currentX += deltaX;
 			}
 		}
-		double simpsonsRule = (2 * midpointSum + trapizoidSum)/3;
-		System.out.println(midpointSum);
-		System.out.println(trapizoidSum);
-		System.out.println(simpsonsRule);
-		System.out.println(actualFinal);
+		
+		double simpsons = (2 * midpointSum + trapizoidSum)/3;
+		
+		double midpointAbsError = Math.abs(actualFinal - midpointSum);
+		double midpointPercentError = (midpointAbsError / actualFinal) * 100;
+		
+		double trapizoidAbsError = Math.abs(actualFinal - trapizoidSum);
+		double trapizoidPercentError = (trapizoidAbsError / actualFinal) * 100;
+		
+		double simpsonAbsError = Math.abs(actualFinal - simpsons);
+		double simpsonPercentError = (simpsonAbsError / actualFinal) * 100;
+		
+
+		
+		System.out.println("Exact value of the integral: " + actualFinal);
+		
+		System.out.println("Midpoint rule approximation: " + midpointSum);
+		System.out.printf("Midpoint rule percent error: %.2f%%%n", midpointPercentError);
+		
+		System.out.println("Trapezoidal rule approximation: " + trapizoidSum);
+		System.out.printf("Trapezoidal rule percent error: %.2f%%%n", trapizoidPercentError);
+		
+		System.out.println("Simpson's rule approximation: " + simpsons);
+		System.out.printf("Simpson's rule percent error: %.2f%%", simpsonPercentError);
 	}
 }
