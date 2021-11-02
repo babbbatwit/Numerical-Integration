@@ -36,7 +36,6 @@ public class NumeralIntegration {
 		
 		double deltaX = (upperLimit - lowerLimit) / subintervals;
 		
-		
 		double actualUpper = (A * Math.pow(upperLimit, 6))/ 6 + (B * Math.pow(upperLimit, 5))/ 5
 				+ (C * Math.pow(upperLimit, 4))/ 4 + (D * Math.pow(upperLimit, 3))/ 3 
 				+ (E * Math.pow(upperLimit, 2))/ 2 + F * upperLimit;
@@ -48,7 +47,7 @@ public class NumeralIntegration {
 		double actualFinal = actualUpper - actualLower;
 		
 		double midpointSum = 0;
-		double currentX = deltaX/2;
+		double currentX = deltaX/2 + lowerLimit;
 		
 		//midpoint for loop
 		for(int i = 0; i < subintervals; i++) {
@@ -86,7 +85,7 @@ public class NumeralIntegration {
 		double simpsons = (2 * midpointSum + trapizoidSum)/3;
 		
 		double midpointAbsError = Math.abs(actualFinal - midpointSum);
-		double midpointPercentError = (midpointAbsError / actualFinal) * 100;
+		double midpointPercentError = Math.abs((midpointAbsError / actualFinal) * 100);
 		
 		double trapizoidAbsError = Math.abs(actualFinal - trapizoidSum);
 		double trapizoidPercentError = (trapizoidAbsError / actualFinal) * 100;
@@ -99,12 +98,12 @@ public class NumeralIntegration {
 		System.out.println("Exact value of the integral: " + actualFinal);
 		
 		System.out.println("Midpoint rule approximation: " + midpointSum);
-		System.out.printf("Midpoint rule percent error: %.2f%%%n", midpointPercentError);
+		System.out.println("Midpoint rule percent error: " + midpointPercentError + "%");
 		
 		System.out.println("Trapezoidal rule approximation: " + trapizoidSum);
-		System.out.printf("Trapezoidal rule percent error: %.2f%%%n", trapizoidPercentError);
+		System.out.println("Trapezoidal rule percent error: " + trapizoidPercentError + "%");
 		
 		System.out.println("Simpson's rule approximation: " + simpsons);
-		System.out.printf("Simpson's rule percent error: %.2f%%", simpsonPercentError);
+		System.out.println("Simpson's rule percent error: " + simpsonPercentError + "%");
 	}
 }
